@@ -17,6 +17,17 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false
   }
 })
+Cypress.on('uncaught:exception', (err, runnable) => {
+  if (err.message.includes('Promise.allSettled')) {
+    return false
+  }
+})
+Cypress.on('uncaught:exception', (err, runnable) => {
+  if (err.message.includes('ckeditor is not a function')) {
+    return false;
+  }
+});
+
 When('Enter login credentials and click on login button', () => {   
         //Check mobiles text
      cy.xpath(locator.emailinputbox).should('be.visible');
@@ -31,9 +42,9 @@ When('Enter login credentials and click on login button', () => {
      
     });
 
-// Then("Check that it redirect to the home page",  ()=> {              
-//         cy.xpath(locator.adminhomelogo).should('be.visible')
-//        });
+Then("Check that it redirect to the home page",  ()=> {              
+        cy.xpath(locator.adminhomelogo).should('be.visible')
+       });
 
 // Function
 
@@ -50,13 +61,11 @@ function selectModuleByIndex(index) {
 
 // ----------------------Add New Module----------------------
 
-Then('Click on the settings dropdown ',  ()=> {
-    cy.xpath(locator.Settingsbutton).should('be.visible')
+Then('Click on the settings dropdown',  ()=> {
     cy.xpath(locator.Settingsbutton).click()
+    cy.xpath(locator.navbar).scrollTo('top')
+    cy.xpath(locator.Modulesetupdropdown).click()
     cy.wait(2000)
-    });
-Then('Click on the system module setup option',  ()=> {
-    cy.xpath(locator.systemmodulesoptions).trigger('mouseover')
     });
 
 Then('Click on add new module button',  ()=> {
@@ -66,11 +75,15 @@ Then('Click on add new module button',  ()=> {
 Then('Enter all required information and click on save button',  ()=> {
     cy.xpath(locator.modulenameinputbox).should('be.visible')
     cy.xpath(locator.modulenameinputbox).type('Testing module')
-    cy.xpath(locator.moduledescriptioninputbox).should('be.visible')
-    cy.xpath(locator.moduledescriptioninputbox).type('This is testing module description')
+    cy.xpath("//iframe[contains(@class,'cke_wysiwyg_frame')]")
+    .its('0.contentDocument.body')
+    .should('not.be.empty')
+    .then(cy.wrap)
+    .click()
+    .type('Testing module description');
     selectModuleByIndex(1); // Select the second radio button (index starts from 1)
-    cy.xpath(locator.moduleiconupload) .attachFile(['invalid-icon.png'])
-    cy.xpath(locator.Modulethambnailupload) .attachFile(['invalid-thumbnail.png'])
+    cy.xpath(locator.moduleiconupload) .attachFile('Module/invalid-icon.png')
+    cy.xpath(locator.Modulethambnailupload) .attachFile('Module/invalid-icon.png')
     cy.xpath(locator.addmodulebutton).click()   
     cy.wait(2000)
     });

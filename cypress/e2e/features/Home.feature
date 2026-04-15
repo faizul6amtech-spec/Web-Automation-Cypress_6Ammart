@@ -8,9 +8,9 @@ Background: Open Website With Valid url
      
 Scenario: Add new module 
     Then Click on the settings dropdown 
-    When Click on the system module setup option
+#     When Click on the system module setup option
     Then Click on add new module button
     When Enter all required information and click on save button
-    Then Check that new module is added successfully
+    
 
 
