@@ -16,12 +16,16 @@ class homePages {
    Modulesetupdropdown = '(//*[@id="tourb-3"])[2]'
    systemmodulesoptions = "//span[normalize-space()='System Module Setup']"
    Addnewmodule= "//span[normalize-space()='Add Business Module']"
-   modulenameinputbox = "//div[@id='default-form']//input[@placeholder='Ex: Grocery eCommerce Pharmacy etc.']"
+   modulenameinputbox = '//*[@id="default-form"]/div[1]/input'
    moduledescriptioninputbox = "//iframe[contains(@class,'cke_wysiwyg_frame')]"
    moduleradiobutton = "//div[@class='module-radio-group']//input[@name='module_type']"
    moduleiconupload = '//*[@id="customFileEg1"]'
    Modulethambnailupload = '//*[@id="customFileEg2"]'
    addmodulebutton = "//button[@type='submit']"
+   // update module
+   modules= "//a[@title='Modules']"
+   editmodulebutton = '//*[@id="table-div"]/tr[1]/td[7]/div/a'
+
 
 }
 export default homePages;

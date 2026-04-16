@@ -91,7 +91,32 @@ Then('Enter all required information and click on save button',  ()=> {
     cy.wait(2000)
     });
 
-
+Then('Click on the module on navbar',  ()=> {
+    cy.xpath(locator.modules).should('be.visible')
+    cy.xpath(locator.modules).click()  
+});
+Then('Click on the update icon',  ()=> {
+    cy.xpath(locator.editmodulebutton).should('be.visible')
+    cy.xpath(locator.editmodulebutton).click()  
+}); 
+Then('Write new title and description',  ()=> {
+    cy.xpath(locator.modulenameinputbox).should('be.visible')
+    cy.xpath(locator.modulenameinputbox).clear().type('Updated Testing module')
+    cy.xpath(locator.moduledescriptioninputbox)
+    .its('0.contentDocument.body')
+    .should('not.be.empty')
+    .then(cy.wrap)
+    .click()
+    .clear()
+    .type('Updated Testing module description');
+    selectModuleByIndex(2); // Select the third radio button (index starts from 1)  
+    cy.wait(2000)
+    });
+Then('Click on submit button',  ()=> {
+    cy.xpath(locator.addmodulebutton).should('be.visible')
+    cy.xpath(locator.addmodulebutton).click()   
+    cy.wait(2000)
+    });
 
 
 
