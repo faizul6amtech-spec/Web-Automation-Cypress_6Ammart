@@ -63,9 +63,12 @@ function selectModuleByIndex(index) {
 
 Then('Click on the settings dropdown',  ()=> {
     cy.xpath(locator.Settingsbutton).click()
-    cy.xpath(locator.navbar).scrollTo('top')
     cy.xpath(locator.Modulesetupdropdown).click()
     cy.wait(2000)
+    cy.xpath(locator.navbar).should('exist')
+    .then(($el) => {
+    $el[0].scrollTop = 0
+    })
     });
 
 Then('Click on add new module button',  ()=> {
@@ -75,7 +78,7 @@ Then('Click on add new module button',  ()=> {
 Then('Enter all required information and click on save button',  ()=> {
     cy.xpath(locator.modulenameinputbox).should('be.visible')
     cy.xpath(locator.modulenameinputbox).type('Testing module')
-    cy.xpath("//iframe[contains(@class,'cke_wysiwyg_frame')]")
+    cy.xpath(locator.moduledescriptioninputbox)
     .its('0.contentDocument.body')
     .should('not.be.empty')
     .then(cy.wrap)

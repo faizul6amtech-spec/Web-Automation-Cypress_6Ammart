@@ -17,7 +17,7 @@ class homePages {
    systemmodulesoptions = "//span[normalize-space()='System Module Setup']"
    Addnewmodule= "//span[normalize-space()='Add Business Module']"
    modulenameinputbox = "//div[@id='default-form']//input[@placeholder='Ex: Grocery eCommerce Pharmacy etc.']"
-   moduledescriptioninputbox = '//div[@id="cke_1_contents"]'
+   moduledescriptioninputbox = "//iframe[contains(@class,'cke_wysiwyg_frame')]"
    moduleradiobutton = "//div[@class='module-radio-group']//input[@name='module_type']"
    moduleiconupload = '//*[@id="customFileEg1"]'
    Modulethambnailupload = '//*[@id="customFileEg2"]'
