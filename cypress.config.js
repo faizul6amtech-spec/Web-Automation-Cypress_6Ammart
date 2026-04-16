@@ -28,7 +28,9 @@ module.exports = defineConfig({
     viewportHeight: 850,
     // reporter: 'mocha', 
     env: {
+      allure: true,
       allureReuseAfterSpec: true,
+      allureResultsPath: "allure-results",
       defaultCommandTimeout: 60000
     },
   },
