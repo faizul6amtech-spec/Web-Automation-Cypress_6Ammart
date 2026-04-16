@@ -1,11 +1,11 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import homePages from "../../Locators/home";
+import ModulePages from "../../Locators/module";
 import allData from '../../data/data';
 import 'cypress-file-upload';
 
 Cypress.config('defaultCommandTimeout', 60000);
 
-const locator = new homePages();
+const locator = new ModulePages();
 const data = new allData();
 
 Given('Open Browser and go to the login page',()=> {

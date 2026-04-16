@@ -1,4 +1,4 @@
-class homePages {
+class ModulePages {
     /******************************************
        *  Case Register locators  *
        * ****************************************/
@@ -28,4 +28,4 @@ class homePages {
 
 
 }
-export default homePages;
+export default ModulePages;
